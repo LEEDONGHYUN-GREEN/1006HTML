@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="my canvas" width="200" height="100"
+            style="border: 1px solid #000000;">
+    
+    </canvas>
+
+    <script>
+        /*
+        자바스크립트는 오류 확인을 브라우저에서 가능하다
+        자바스크립트는 브라우저 환경에서 실행되기 때문에
+        html파일에서 작성할때는 오류를 확인 할 수 없다
+        */
+        
+        //html에서 id값을 통해 요소를 가져온다
+        let paper = document.getElementById("my canvas");
+        let context = paper.getContext("2d");
+
+        //context를 통해서 그림을 그릴 수 있다
+        //fillstyle을 사용해서 색 지정
+        //fillRect를 이용하여 x,y,width,height 지정하여 사각형 그리기
+        context.fillStyle = "#FF0000";
+        context.fillRect(10,10,180,80); 
+        
+        context.strokeStyle="#ffff00";
+        context.moveTo(0,0);
+        context.lineTo(200,100);
+        context.stroke();
+
+        //원을 그리는 방법
+        context.beginPath(); //Path를 먼저 시작하는것을 알린다
+        context.arc(95,50,40,0,2*Math.PI); //원의 Path 지정
+        context.stroke();
+
+        context.font="30px Arial";
+        context.fillText("Hello World",10,50);
+        context.strokeText("Hello World",10,50);
+
+        //그라디언트 넣는 법 / 생성
+        let grd = context.createRadialGradient(0,0,25,50,0,80);
+        grd.addColorStop(0,"blue");
+        grd.addColorStop(1,"yellow");
+
+        //그라디언트 사용
+        context.fillStyle = grd;
+        context.fillRect(0,0,100,60);
+
+
+        
+        let grd2 = context.createRadialGradient(80,50,60,0,70,20);
+        grd2.addColorStop(0,"white");
+        grd2.addColorStop(1,"blue");
+
+        context.fillStyle = grd2;
+        context.fillRect(20,40,120,40);
+
+        context.font="24px Arial";
+        context.fillText("CANVAS",23,70);
+        context.strokeText("CANVAS",23,70);
+        context.strokeStyle("#ffffff");
+        
+
+
+
+
+    </script>
+</body>
+</html>
